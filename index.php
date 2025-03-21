@@ -13,6 +13,11 @@ if(isset($_POST["submit"])){
     $reslut=mysqli_query($conn,$sql);
 }
 
+if(isset($_GET['id'])){
+    $id=$_GET['id'];
+    $sql="DELETE FROM tbluser WHERE id=$id";
+    $result=mysqli_query($conn,$sql);
+}
 
 ?>
 <html lang="en">
@@ -32,6 +37,7 @@ while($rad=mysqli_fetch_assoc($result)){ ?>
     <p>
         <b>Användarnamn:</b>&nbsp;<?=$rad["username"]?><br>
         <b>Lösenord:</b>&nbsp;<?=$rad["password"]?>
+        <a href="index.php?id=<?=$rad['id']?>">Delete</a>
     </p>
 <?php }
 ?>
